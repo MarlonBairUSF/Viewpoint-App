@@ -38,8 +38,17 @@ function ChatBox({ chatHistory, onSendMessage, selectedPerspective }) {
           </div>
         ) : (
           chatHistory.map((chat, index) => (
-            <div key={index} className={`chat-message ${chat.sender}`}>
-              <div className="message-content">{chat.text}</div>
+            <div 
+              key={index} 
+              className={`chat-message ${chat.sender} ${chat.loading ? 'loading' : ''}`}
+            >
+              <div className="message-content">
+                {chat.loading ? (
+                  <span className="loading-dots">Thinking</span>
+                ) : (
+                  chat.text
+                )}
+              </div>
             </div>
           ))
         )}

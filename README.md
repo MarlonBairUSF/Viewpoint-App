@@ -30,3 +30,9 @@ A React-based interactive application that allows users to engage with different
 
 - Node.js (Latest LTS version recommended)
 - npm (comes with Node.js)
+- OpenAI API key
+
+### Environment Setup
+
+1. Copy `.env.example` to `.env`
+2. Replace `your_openai_api_key_here` with your actual OpenAI API key
