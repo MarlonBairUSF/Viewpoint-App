@@ -1,0 +1,78 @@
+.debate-box {
+  margin: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.debate-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.debate-controls select,
+.debate-controls input {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  flex: 1;
+}
+
+.debate-controls button {
+  padding: 8px 16px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.debate-controls button:hover {
+  background-color: #357abd;
+}
+
+.debate-history {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  height: 400px;
+  overflow-y: auto;
+}
+
+.debate-message {
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  max-width: 80%;
+}
+
+.debate-message.democratic {
+  align-self: flex-start;
+  background-color: #2b5797;
+  color: white;
+}
+
+.debate-message.conservative {
+  align-self: flex-end;
+  background-color: #b71234;
+  color: white;
+}
+
+.debate-message.libertarian {
+  background-color: #ffd700;
+  color: black;
+}
+
+.debate-message.green {
+  background-color: #3d9c35;
+  color: white;
+}
+
+.error-message {
+  color: red;
+  margin: 10px 0;
+} 

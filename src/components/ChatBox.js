@@ -1,8 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './ChatBox.css';
 import { perspectives } from './PerspectiveSelector';
+import { db } from '../config/firebase';
+import { collection, addDoc, query, where, orderBy, onSnapshot } from 'firebase/firestore';
+import { useAuth } from '../contexts/AuthContext';
 
 function ChatBox({ chatHistory, onSendMessage, selectedPerspective }) {
+  const { user } = useAuth();
   const [message, setMessage] = useState('');
   const chatContainerRef = useRef(null);
 
@@ -19,11 +23,47 @@ function ChatBox({ chatHistory, onSendMessage, selectedPerspective }) {
     }
   }, [chatHistory]);
 
-  const handleSubmit = (e) => {
+  // Load chat history from Firestore
+  useEffect(() => {
+    if (!user || !selectedPerspective) return;
+
+    const q = query(
+      collection(db, 'chats'),
+      where('userId', '==', user.uid),
+      where('perspective', '==', selectedPerspective),
+      orderBy('timestamp', 'asc')
+    );
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const chats = [];
+      snapshot.forEach((doc) => {
+        chats.push(doc.data());
+      });
+      // Instead of using setChatHistory directly, use the onSendMessage prop
+      // to update the parent component's state
+      onSendMessage(chats);
+    });
+
+    return () => unsubscribe();
+  }, [user, onSendMessage, selectedPerspective]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (message.trim() && selectedPerspective) {
-      onSendMessage(message);
-      setMessage('');
+    if (message.trim() && selectedPerspective && user) {
+      try {
+        await addDoc(collection(db, 'chats'), {
+          userId: user.uid,
+          sender: 'user',
+          text: message,
+          perspective: selectedPerspective,
+          timestamp: new Date()
+        });
+        
+        onSendMessage(message);
+        setMessage('');
+      } catch (error) {
+        console.error('Error saving chat:', error);
+      }
     }
   };
 

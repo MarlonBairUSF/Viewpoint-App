@@ -4,6 +4,31 @@
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(240, 240, 255, 0.95) 50%,
+    rgba(255, 240, 240, 0.95) 100%
+  );
+  position: relative;
+  z-index: 1;
+}
+
+/* Add this new style for the body */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(
+    45deg,
+    #b22234 0%,
+    #b22234 33%,
+    #ffffff 33%,
+    #ffffff 66%,
+    #3c3b6e 66%,
+    #3c3b6e 100%
+  );
+  background-attachment: fixed;
 }
 
 .App-header {
@@ -11,18 +36,54 @@
 }
 
 .App-header h1 {
-  color: #333;
+  color: #3c3b6e;
   margin-bottom: 10px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 3px solid #b22234;
+  padding-bottom: 10px;
+  display: inline-block;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.App-header p {
+  color: #666;
+  font-size: 1.1rem;
+  font-style: italic;
 }
 
 main {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
 }
 
 @media (min-width: 768px) {
   main {
-    flex-direction: row;
+    align-items: stretch;
   }
+}
+
+.mode-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.mode-toggle button {
+  padding: 8px 16px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.mode-toggle button.active {
+  background-color: #4a90e2;
+  color: white;
+  border-color: #4a90e2;
 } 

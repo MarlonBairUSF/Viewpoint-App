@@ -4,7 +4,7 @@ import './PerspectiveSelector.css';
 export const perspectives = [
   {
     id: 'conservative',
-    name: 'Conservative',
+    name: 'Republican',
     image: 'https://res.cloudinary.com/dh5csqdyn/image/upload/v1742924043/cons_b7ufrv.webp'
   },
   {
