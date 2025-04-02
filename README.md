@@ -6,7 +6,7 @@ This project hopes to help users gain literacy on the different perspectives on 
 
 ## Try the App
 
-The app is deployed at https://viewpoint-app.vercel.app/, and this video shows it off <link>
+The app is deployed at https://viewpoint-app.vercel.app/, and this video shows it off https://youtu.be/CDZ0DgT1E-c.
 
 ## Followup Prompts Regarding Features, and Cursor Responses
 
